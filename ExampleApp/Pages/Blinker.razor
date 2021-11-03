@@ -1,0 +1,14 @@
+@page "/Blinker"
+<h3>Blinker</h3>
+
+<div class=@(blink ? "blink" : "")>HIIii !!!!</div>
+
+<label>
+    blink
+    <input @bind="blink" type="checkbox"/>
+</label>
+
+@code {
+
+    public bool blink = true;
+}

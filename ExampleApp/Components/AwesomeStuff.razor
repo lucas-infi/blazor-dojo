@@ -1,0 +1,16 @@
+@page "/SimpleComponent"
+<h3>AwesomeStuff</h3>
+<div>
+    <input @bind="SomeNumber" />
+</div>
+
+<div>
+    Your number is :
+    <h3>@SomeNumber </h3>
+</div>
+
+
+@code{
+    [Parameter]
+    public int SomeNumber { get; set; } = 15;
+}

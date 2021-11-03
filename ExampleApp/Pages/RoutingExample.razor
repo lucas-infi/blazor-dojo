@@ -1,0 +1,12 @@
+@page "/RoutingExample/"
+@page "/RoutingExample/{message}"
+
+<h3>RoutingExample</h3>
+<p> Your Message: @Message </p>
+
+@code {
+
+    [Parameter]
+    public string Message { get; set; } = string.Empty;
+
+}

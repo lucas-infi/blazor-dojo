@@ -1,0 +1,12 @@
+@page "/FormExample"
+<h3>FormExample</h3>
+
+<EditForm Model="@FormModelExample" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText id="name" @bind-Value="FormModelExample.Name" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+

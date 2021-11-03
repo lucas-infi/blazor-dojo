@@ -1,0 +1,13 @@
+@using ExampleApp.Services
+@inject StatusService _statusService
+
+<h3>StatusComponent</h3>
+
+<div class="row">
+    @Status
+</div>
+
+
+@code {
+    public string Status { get; set; }
+}

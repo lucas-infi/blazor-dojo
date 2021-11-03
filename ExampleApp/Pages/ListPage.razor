@@ -1,0 +1,18 @@
+@page "/ListPage"
+<h1>List</h1>
+@foreach (var item in Listing)
+{
+    <div>@item</div>
+}
+
+<div>
+    <label>Input <input type="text" @bind=_inputText/></label>
+    <button @onclick=@(() => Listing.Add(_inputText))>Add</button>
+        <button @onclick="@(() => Listing = new())">Clear</button>
+
+</div>
+
+@code {
+    private List<string> Listing = new List<string>();
+    private string _inputText = "";
+}

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChattyApi", "ChattyApi\Chat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleChatty", "ConsoleChatty\ConsoleChatty.csproj", "{F16CA817-E9E8-4640-8BDF-C13BA83783F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{05AA2917-C38F-44DE-BCE6-2A779445D27C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05AA2917-C38F-44DE-BCE6-2A779445D27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05AA2917-C38F-44DE-BCE6-2A779445D27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05AA2917-C38F-44DE-BCE6-2A779445D27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05AA2917-C38F-44DE-BCE6-2A779445D27C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

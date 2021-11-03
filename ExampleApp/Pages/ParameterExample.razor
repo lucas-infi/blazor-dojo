@@ -1,0 +1,21 @@
+@page "/ParameterExample"
+@using ExampleApp.Components;
+
+<h3>ParentComponent</h3>
+<div>
+    Input field lives in the parent component.
+</div>
+<div>
+    <input @bind="Awesome.AwesomeString"/>
+</div>
+
+<ClassComponent Awesome=@Awesome/>
+
+@code {
+
+    public Awesome Awesome { get; } = new Awesome
+    {
+        AwesomeString = "Whoaa Sick Dude!"
+    };
+
+}

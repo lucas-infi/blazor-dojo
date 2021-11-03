@@ -1,0 +1,49 @@
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2" @onclick="ToggleNavMenu">
+    <div class="nav container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="@NavMenuCssClass navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span>Home
+                </NavLink>
+                <NavLink class="nav-link" href="/Blinker" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>Blinker
+                </NavLink>
+                <NavLink class="nav-link" href="/BindExample" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>BindExample
+                </NavLink>
+                <NavLink class="nav-link" href="/ListPage" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>Lists
+                </NavLink>
+                <NavLink class="nav-link" href="/ParameterExample" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>ParameterExample
+                </NavLink>
+                <NavLink class="nav-link" href="/RoutingExample" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>RoutingExample
+                </NavLink>
+                <NavLink class="nav-link" href="/FormExample" Match="NavLinkMatch.All">
+                    <span class="oi oi-list" aria-hidden="true"></span>FormExample
+                </NavLink>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+@code {
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+}

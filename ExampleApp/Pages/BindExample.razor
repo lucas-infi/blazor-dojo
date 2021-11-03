@@ -1,0 +1,11 @@
+@page "/BindExample"
+
+<div>
+    Context of inputValue : @inputValue
+</div>
+
+<input type="number" @bind="inputValue"/>
+
+@code {
+    private int inputValue = 123;
+}

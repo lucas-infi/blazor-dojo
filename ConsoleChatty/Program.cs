@@ -21,12 +21,22 @@ namespace ConsoleChatty
 
             Console.Write("What is your name? ");
             var name = Console.ReadLine();
+            if (string.IsNullOrEmpty(name))
+            {
+                return;
+            }
 
             while (true)
             {
                 Console.Write(">");
                 var msg = Console.ReadLine();
-                await connection.InvokeAsync("SendMessage", name, msg ?? string.Empty);
+                if (msg == null)
+                {
+                    Console.WriteLine("Bye...");
+                    return;
+                }
+
+                await connection.InvokeAsync("SendMessage", name, msg);
             }
         }
     }

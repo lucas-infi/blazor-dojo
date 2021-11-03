@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChattyApi", "ChattyApi\ChattyApi.csproj", "{A2D3199F-65F4-42D1-B122-4A0783E694D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleChatty", "ConsoleChatty\ConsoleChatty.csproj", "{F16CA817-E9E8-4640-8BDF-C13BA83783F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2D3199F-65F4-42D1-B122-4A0783E694D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D3199F-65F4-42D1-B122-4A0783E694D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D3199F-65F4-42D1-B122-4A0783E694D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D3199F-65F4-42D1-B122-4A0783E694D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16CA817-E9E8-4640-8BDF-C13BA83783F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

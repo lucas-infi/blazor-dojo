@@ -1,0 +1,258 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section data-markdown>
+            Hi
+            ---
+            ## What If
+            - The CLR worked in the browser
+            - We used WebSockets to update pieces of the DOM
+            - Razor was less like php and more like JS
+
+            ---
+            ## Blazor
+
+            - Blazor is C# + HTML + CSS
+            - Server-side: SignalR and some JS to update the DOM
+            - Client-side: A lightweight CLR in the browser
+        </section>
+
+        <section>
+            <h1>Code</h1>
+            <pre><code data-trim class="language-html">
+@page "/Blinker"
+<h3>Blinker</h3>
+<div class='@(blink ? "blink" : "")'>HIIii !!!!</div>
+    <label>blink
+        <input @bind="blink" type="checkbox"/>
+    </label>
+@code {
+    public bool blink = true;
+}
+    </code></pre>
+            <iframe title="Inline Frame Example"
+                    width="300"
+                    height="200"
+                    src="http://localhost:5000/blinker"></iframe>
+        </section>
+
+        <section>
+            <h4>Collections</h4>
+            <pre><code>
+<h1>List</h1>
+@foreach (var item in Listing)
+{
+    <div>@item</div>
+}
+
+<div>
+    <label>Input <input type="text" @bind=_inputText/></label>
+    <button @onclick="@(() => Listing.Add(_inputText))">Add</button>
+    <button @onclick="@(() => Listing = new())">Clear</button>
+</div>
+            </code></pre>
+            <pre>
+                <code class="language-cs data-noescape">
+    private readonly List<string> Listing = new List<string>();
+    private string _inputText = "";
+            </code></pre>
+            <iframe title="Inline Frame Example"
+                    width="300"
+                    height="200"
+                    src="http://localhost:5000/ListPage"></iframe>
+        </section>
+
+        <section>
+            <h4>Forms</h4>
+            <pre>
+                <code class="language-html ">
+<h3>FormExample</h3>
+<EditForm Model="@FormModelExample" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary> </ValidationSummary>
+    <InputText id="name" @bind-Value="FormModelExample.Name"/>
+    <button type="submit">Submit</button>
+</EditForm>
+                </code>
+                <code class="language-cs">
+public partial class FormExample
+{
+    public ExampleModel FormModelExample { get; set; } = new ExampleModel();
+
+    public class ExampleModel
+    {
+        [Required]
+        [StringLength(10, ErrorMessage = "Name is too long.")]
+        public string Name { get; set; }
+    }
+    private void HandleValidSubmit()
+    {
+    }
+}
+        </code>
+            </pre>
+        </section>
+
+        <section>
+            <h4>Forms</h4>
+            <iframe title="Inline Frame Example"
+                    width="600"
+                    height="200"
+                    src="http://localhost:5000/FormExample"></iframe>
+        </section>
+
+        <section>
+            <h4>Routing</h4>
+            <pre><code class="language-html">
+@page "/RoutingExample/"
+@page "/RoutingExample/{message}"
+
+<h3>RoutingExample</h3>
+<p> Your Message: @Message </p>
+@code {
+    [Parameter]
+    public string Message { get; set; } = string.Empty;
+}
+
+            </code></pre>
+            <div style="display: flex">
+                <div>
+                    <span style="font-size: 20pt"><pre>http://localhost:5000/RoutingExample</pre></span>
+                    <iframe title="Inline Frame Example"
+                            width="400"
+                            height="200"
+                            src="http://localhost:5000/RoutingExample"></iframe>
+                </div>
+                <div>
+                    <span style="font-size: 20pt"><pre>http://localhost:5000/RoutingExample/ThisIsAMessage</pre></span>
+                    <iframe title="Inline Frame Example"
+                            width="400"
+                            height="200"
+                            src="http://localhost:5000/RoutingExample/ThisIsAMessage"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>parameters</h3>
+            <div style="display: flex">
+                <div>
+            <pre><code>
+@page "/ParameterExample"
+@using ExampleApp.Components;
+<h3>ParentComponent</h3>
+<div>
+    Input field lives in the parent component.
+</div>
+<div>
+    <input @bind="Awesome.AwesomeString"/>
+</div>
+<ClassComponent Awesome=@Awesome/>
+
+            </code>
+                </pre>
+                    <pre>
+            <code>
+    public Awesome Awesome { get; } = new Awesome
+    {
+        AwesomeString = "Whoaa Sick Dude!"
+    };
+            </code></pre>
+
+                </div>
+                <div>
+                    <pre><code>
+<h3>Component</h3>
+<div class="small">
+    @nameof(ClassComponent)
+</div>
+<div class="blink">
+    @Awesome.AwesomeString
+</div>
+                    </code></pre>
+                    <pre><code>
+    [Parameter]
+    public Awesome Awesome { get; set; }
+                    </code></pre>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <iframe title="Inline Frame Example"
+                    width="400"
+                    height="400"
+                    src="https://localhost:5001/ParameterExample"></iframe>
+        </section>
+
+        <section data-markdown>
+            # When, what?
+
+            - SSR Blazor replaces Razor + MVC
+            - ClientSide Blazor for the brave
+
+        </section>
+
+        <section>
+            <h1>Tips and Tricks</h1>
+            <p>Nesting files and seperation of html + logic</p>
+
+            <img src="/img.png" alt="someimage" style="width: 500px">
+            <img src="/img_1.png" alt="someimage" style="width: 500px">
+        </section>
+
+        <section>
+            <h1>Tips and Tricks</h1>
+            <p>Microsofts docs are really good</p>
+            <pre>https://docs.microsoft.com/en-us/aspnet/core/blazor/</pre>
+        </section>
+
+        <section data-markdown>
+            # ChattyApi
+            - Start a new project:
+                - `dotnet new blazorserver -o CoolName`
+                - `dotnet add package Microsoft.AspNetCore.SignalR.Client`
+
+        </section>
+
+        <section data-markdown>
+            # ChattyApi
+           
+
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+</script>
+</body>
+</html>
